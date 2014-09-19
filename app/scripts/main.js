@@ -51,5 +51,18 @@ $( function() {
       $( this ).addClass('is-checked');
     });
   });
+
+  // Weather
+
+// $.get( "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%3D2502265&format=json&diagnostics=true&callback=", function(data){
+//     var data = data;
+//     // console.log(data);
+//     var intro = data.query.results.channel.title;
+//     $('.weather').text(intro);
+// });
+
+
+
+
   
 });

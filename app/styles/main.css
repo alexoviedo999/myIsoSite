@@ -9,6 +9,9 @@
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  background-color: #262524;
+  color: whitesmoke;
+  font-family: sans-serif;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -73,9 +76,6 @@ body {
           box-sizing: border-box;
 }
 
-body {
-  font-family: sans-serif;
-}
 
 /* ---- button ---- */
 
@@ -134,7 +134,7 @@ body {
 /* ---- isotope ---- */
 
 .isotope {
-  border: 1px solid #333;
+  /*border: 1px solid #333;*/
 }
 
 /* clear fix */
@@ -208,11 +208,21 @@ body {
 
 
 
+#geo-iso {
+  width: 225px;
+  height: 225px;
+}
+
+div#mapcanvas {
+  width: 180px !important;
+  height: 180px !important;
+}
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    /*max-width: 730px;*/
   }
 
   /* Remove the padding we set earlier */
