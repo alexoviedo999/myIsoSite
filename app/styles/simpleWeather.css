@@ -127,7 +127,7 @@ h1.weather {
   /*margin: 0 20px;*/
 }
 
-button {
+#weather-iso button {
   display: block;
   margin: 15px auto;
   width: 140px;

@@ -52,17 +52,91 @@ $( function() {
     });
   });
 
-  // Weather
 
-// $.get( "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%3D2502265&format=json&diagnostics=true&callback=", function(data){
-//     var data = data;
-//     // console.log(data);
-//     var intro = data.query.results.channel.title;
-//     $('.weather').text(intro);
-// });
+function onLinkedInLoad() {
+     IN.Event.on(IN, "auth", onLinkedInAuth);
+}
 
+function onLinkedInAuth() {
+     IN.API.Profile("me").result(displayProfiles);
+} 
 
-
+function displayProfiles(profiles) {
+     member = profiles.values[0];
+     document.getElementById("profiles").innerHTML = 
+          "<p id=\"" + member.id + "\">Hello " +  member.firstName + " " + member.lastName + "</p>";
+}
 
   
 });
+
+
+// Space Canvas
+
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+
+var DeepSpace = function(size, number, speed) {
+  this.size = size;
+  this.number = number;
+  this.speed = speed;
+  this.objects = new Array();
+
+  this.initialize = function()
+  {
+    this.creationImage();
+    this.drawCircle();
+    this.animate();
+  }
+
+  this.creationImage = function()
+  {
+    for(var i = 0; i < this.number; i++)
+    {
+      var star = {
+        'x' : Math.random()*2000,
+        'y' : Math.random()*900,
+        'radius' : Math.random()*this.size+1,
+      }
+      this.objects.push(star);
+    }
+  }
+
+  this.drawCircle = function(x, y, radius)
+  {
+    with(ctx)
+    {
+      beginPath();
+      arc(x, y, radius, 0, 2*Math.PI);
+      fillStyle = 'white';
+      fill();
+      stroke();
+      closePath();
+    }
+  }
+
+  this.animate = function()
+  {
+    for(var j in this.objects)
+    {
+      var x = this.objects[j].x--;
+      var y = this.objects[j].y;
+      var radius = this.objects[j].radius;
+      
+      if(x < -2) this.objects[j].x = 2000;
+
+      this.drawCircle(x, y, radius);
+      
+    }
+  }
+  
+  setInterval(this.animate.bind(this), this.speed);
+}
+
+var space = new DeepSpace(0.5, 600, 50);
+space.initialize();
+var space = new DeepSpace(1.3, 180, 30);
+space.initialize();
+var space = new DeepSpace(1.5, 80, 10);
+space.initialize();
+

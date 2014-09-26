@@ -1,17 +1,26 @@
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
 
-/* Space out content a bit */
 body {
+  background-color: black;
+  overflow: hidden;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: #262524;
+  /*background-color: #262524;*/
   color: whitesmoke;
   font-family: sans-serif;
+}
+
+#canvas{ 
+  position:fixed;
+  z-index: -1000;
+}
+
+.container {
+  z-index: 1000;
+}
+
+#filters,
+#sorts {
+  position: relative;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -22,12 +31,6 @@ body {
   padding-right: 15px;
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-/* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
@@ -35,18 +38,16 @@ body {
   padding-bottom: 19px;
 }
 
-/* Custom page footer */
 .footer {
   padding-top: 19px;
   color: #777;
-  border-top: 1px solid #e5e5e5;
+  /*border-top: 1px solid #e5e5e5;*/
 }
 
 .container-narrow > hr {
   margin: 30px 0;
 }
 
-/* Main marketing message and sign up button */
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
@@ -57,7 +58,6 @@ body {
   padding: 14px 24px;
 }
 
-/* Supporting marketing content */
 .marketing {
   margin: 40px 0;
 }
@@ -65,6 +65,19 @@ body {
 .marketing p + h4 {
   margin-top: 28px;
 }
+
+#geo-iso {
+  width: 225px;
+  height: 225px;
+}
+
+div#mapcanvas {
+  width: 180px !important;
+  height: 180px !important;
+}
+
+
+
 
 
 
@@ -155,6 +168,9 @@ body {
   padding: 10px;
   background: #888;
   color: #262524;
+  box-shadow:0px 0px 15px 2px #C9C9C9;
+  -webkit-box-shadow:0px 0px 15px 2px #C9C9C9;
+  -moz-box-shadow:0px 0px 15px 2px #C9C9C9;
 }
 
 .element-item > * {
@@ -195,28 +211,66 @@ body {
   font-size: 12px;
 }
 
-.element-item.alkali          { background: #F00; background: hsl(   0, 100%, 50%); }
-.element-item.alkaline-earth  { background: #F80; background: hsl(  36, 100%, 50%); }
-.element-item.lanthanoid      { background: #FF0; background: hsl(  72, 100%, 50%); }
-.element-item.actinoid        { background: #0F0; background: hsl( 108, 100%, 50%); }
-.element-item.transition      { background: #0F8; background: hsl( 144, 100%, 50%); }
-.element-item.post-transition { background: #0FF; background: hsl( 180, 100%, 50%); }
-.element-item.metalloid       { background: #08F; background: hsl( 216, 100%, 50%); }
-.element-item.diatomic        { background: #00F; background: hsl( 252, 100%, 50%); }
-.element-item.halogen         { background: #F0F; background: hsl( 288, 100%, 50%); }
-.element-item.noble-gas       { background: #F08; background: hsl( 324, 100%, 50%); }
+.element-item.alkali { 
+    background: #F00; 
+    background: hsl(0, 100%, 50%);
+    box-shadow: 0px 0px 15px 1px hsl(0, 100%, 50%);
+  }
 
+.element-item.alkaline-earth { 
+    background: #F80; 
+    background: hsl(0, 100%, 50%);
+    box-shadow: 0px 0px 15px 1px hsl(0, 100%, 50%);
+  }
 
+.element-item.lanthanoid { 
+    background: #FF0; 
+    background: hsl(72, 100%, 50%); 
+    box-shadow: 0px 0px 15px 1px hsl(72, 100%, 50%);
+  }
 
-#geo-iso {
-  width: 225px;
-  height: 225px;
+.element-item.actinoid { 
+    background: #0F0; 
+    background: hsl(108, 100%, 50%); 
+    box-shadow: 0px 0px 15px 1px hsl(108, 100%, 50%);
+  }
+
+.element-item.transition { 
+  background: #0F8; 
+  background: hsl(144, 100%, 50%); 
+  box-shadow: 0px 0px 15px 1px hsl(144, 100%, 50%);
 }
 
-div#mapcanvas {
-  width: 180px !important;
-  height: 180px !important;
+.element-item.post-transition { 
+  background: #0FF; 
+  background: hsl(180, 100%, 50%);
+  box-shadow: 0px 0px 15px 1px hsl(180, 100%, 50%);
 }
+
+.element-item.metalloid { 
+  background: #08F; 
+  background: hsl(216, 100%, 50%); 
+  box-shadow: 0px 0px 15px 1px hsl(216, 100%, 50%);
+}
+
+.element-item.diatomic { 
+  background: #00F; 
+  background: hsl(252, 100%, 50%);
+  box-shadow: 0px 0px 15px 1px hsl(252, 100%, 50%);
+}
+
+.element-item.halogen { 
+  background: #F0F; \
+  background: hsl(288, 100%, 50%); 
+  box-shadow: 0px 0px 15px 1px hsl(288, 100%, 50%);
+}
+
+.element-item.noble-gas { 
+  background: #F08; 
+  background: hsl(324, 100%, 50%);
+  box-shadow: 0px 0px 15px 1px hsl(324, 100%, 50%);
+}
+
 
 
 /* Responsive: Portrait tablets and up */
